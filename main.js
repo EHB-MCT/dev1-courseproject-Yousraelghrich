@@ -26,8 +26,13 @@ function drawMultipleCircles(numberOfCircles) {
 		drawRandomCircle();
 	}
 }
+// black background
+function backGround() {
+	context.fillStyle = "black";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 window.addEventListener("load", () => {
-	// Teken bijvoorbeeld 20 willekeurige cirkels
+	backGround();
 	drawMultipleCircles(100);
 });
