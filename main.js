@@ -20,6 +20,14 @@ function drawRandomCircle() {
 	context.fill();
 }
 
+// Functie om meerdere willekeurige cirkels te tekenen
+function drawMultipleCircles(numberOfCircles) {
+	for (let i = 0; i < numberOfCircles; i++) {
+		drawRandomCircle();
+	}
+}
+
 window.addEventListener("load", () => {
-	drawRandomCircle();
+	// Teken bijvoorbeeld 20 willekeurige cirkels
+	drawMultipleCircles(100);
 });
