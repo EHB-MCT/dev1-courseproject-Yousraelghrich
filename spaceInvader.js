@@ -9,7 +9,6 @@ let context = canvas.getContext("2d");
 backGround();
 
 drawRectangles();
-
 // black rectangle
 function backGround() {
 	context.fillStyle = "black";
@@ -45,3 +44,4 @@ function drawRectangles() {
 	context.fillRect(280, 150, size, size);
 	context.fillRect(280, 200, size, size);
 }
+//export function drawRectangles ();

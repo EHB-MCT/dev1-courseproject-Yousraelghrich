@@ -32,17 +32,48 @@ function createRandomCircle() {
 		color,
 		a: Math.random() * 2 - 1,
 		b: Math.random() * 2 - 1,
-		isHovered: false, // checken of de muis over de cirkel is
+		isHovered: false,
 	};
 }
 
-// achtergrond zwart
+//achtergrond zwart
 function backGround() {
 	context.fillStyle = "black";
 	context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Animatie
+// space invader
+function drawRectangles() {
+	const size = 50;
+
+	context.fillStyle = "#00FF00";
+	// 1ste rij
+	context.fillRect(80, 150, size, size);
+	context.fillRect(80, 200, size, size);
+
+	// 2de rij
+	context.fillRect(130, 100, size, size);
+	context.fillRect(130, 150, size, size);
+	context.fillRect(130, 200, size, size);
+	context.fillRect(130, 250, size, size);
+
+	// Middelste
+	context.fillRect(180, 200, size, size);
+
+	// 3de rij
+	context.fillRect(230, 100, size, size);
+	context.fillStyle = "#00FF00";
+	context.fillRect(230, 150, size, size);
+	context.fillStyle = "#00FF00";
+	context.fillRect(230, 200, size, size);
+	context.fillRect(230, 250, size, size);
+
+	// 4de rij
+	context.fillRect(280, 150, size, size);
+	context.fillRect(280, 200, size, size);
+}
+
+//animatie
 function animate() {
 	backGround();
 	circles.forEach((circle) => {
@@ -66,36 +97,34 @@ function animate() {
 		// Controleer of de muis over de cirkel > kleur verandering periodddd
 		if (isMouseOverCircle(circle)) {
 			if (!circle.isHovered) {
-				// Als de cirkel nog niet is gehighlight, verander de kleur
 				circle.color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
 					Math.random() * 256
 				)}, ${Math.floor(Math.random() * 256)})`;
-				circle.isHovered = true; // Zet de flag naar true
+				circle.isHovered = true;
 			}
 		} else {
-			circle.isHovered = false; // false als het niet meer op de cirkel staat
+			circle.isHovered = false;
 		}
 
 		drawRandomCircle(circle.x, circle.y, circle.radius, circle.color);
 	});
 
+	drawRectangles();
+
 	requestAnimationFrame(animate);
 }
 
-//  controleren of de muis boven een cirkel is
 function isMouseOverCircle(circle) {
 	const mouseX = mousePosition.x;
 	const mouseY = mousePosition.y;
-	// Berekenen afstand tussen de muis en het midden van de cirkel
 	const distance = Math.sqrt(
 		Math.pow(mouseX - circle.x, 2) + Math.pow(mouseY - circle.y, 2)
 	);
 	return distance < circle.radius;
 }
 
-//muispositie
+// Mouse
 let mousePosition = { x: 0, y: 0 };
-
 window.addEventListener("mousemove", (event) => {
 	mousePosition.x = event.x;
 	mousePosition.y = event.y;
